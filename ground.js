@@ -19,6 +19,5 @@ export function updateGround(delta, speedScale) {
         if(getCustomProperty(ground, "--left") <= -300) {
             incrementCustomProperty(ground, "--left", 600)
         }
-
     })
 }
