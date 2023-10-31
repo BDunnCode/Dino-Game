@@ -9,10 +9,14 @@ const FRAME_TIME = 100
 let isJumping
 let dinoFrame
 let currentFrameTime
+let yVelocity
+
 export function setupDino() {
     isJumping = false
     dinoFrame = 0
     currentFrameTime = 0
+    yVelocity = 0
+    setCustomProperty(dinoElem, "--bottom", 0)
     document.removeEventListener("keydown", onJump)
     document.addEventListener("keydown", onJump)
 }
@@ -20,6 +24,14 @@ export function setupDino() {
 export function updateDino(delta, speedScale) {
     handleRun(delta, speedScale)
     handleJump(delta)
+}
+
+export function getDinoRect() {
+    return dinoElem.getBoundingClientRect()
+}
+
+export function setDinoLose() {
+    dinoElem.src = "imgs/dino-lose.png"
 }
 
 function handleRun(delta, speedScale) {
